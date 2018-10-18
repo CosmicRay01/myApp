@@ -1,0 +1,16 @@
+<h1>Pastries</h1>
+
+<ul [@listStagger]="users$" >
+  <li *ngFor="let user of users$">
+    <a routerLink="/details/{{user.id}}">{{ user.name }}</a>
+
+    <ul>
+      <li>{{ user.email }}</li>
+      <a routerLink="/checkout/{{user.id}}">
+        <button>
+            <span>Checkout</span>
+        </button>
+      </a>
+    </ul>
+  </li>
+</ul>

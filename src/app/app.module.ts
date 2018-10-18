@@ -8,6 +8,11 @@ import { UsersComponent } from './users/users.component';
 import { DetailsComponent } from './details/details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SigninComponent } from './signin/signin.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { ProductsComponent } from './products/products.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { ThankyouComponent } from './thankyou/thankyou.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +20,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SidebarComponent,
     PostsComponent,
     UsersComponent,
-    DetailsComponent
+    DetailsComponent,
+    SigninComponent,
+    HomepageComponent,
+    ProductsComponent,
+    CheckoutComponent,
+    ThankyouComponent
   ],
   imports: [
     BrowserModule,
