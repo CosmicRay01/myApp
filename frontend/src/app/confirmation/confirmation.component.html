@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<div class="container">
+  <div class="row">
+    <div class="column col-lg">
+      <h1 class="display-4 text-info bg-white"><a routerLink="/">Sweat Dreams Delight Bakery</a></h1>
+    </div>
+    <div class="column col-sm text-right mt-auto mb-3">
+      Products restock every 10 minutes!
+    </div>
+  </div>
+
+  <div *ngIf="this.error !== undefined" class="alert alert-danger">{{this.error}}</div>
+
+  <div class="jumbotron">
+    <div *ngIf="!this.cancelled" class="alert alert-success" role="alert">
+      <h1>Congratulations! Your purchase is on its way.</h1>
+        <p>Thank you for shopping with Sweet Dreams Delight Bakery.</p>
+        <hr>
+      <button routerLink="/products" class="btn btn-primary">Continue Shopping</button>
+      <button routerLink="" (click)="this.data.clearLocalUser()"
+      class="btn btn-info">Sign Out</button>
+      <button (click)="this.cancelOrder()" class="btn btn-danger">Cancel Order</button>
+      <br>
+    </div>
+    <div *ngIf="this.cancelled" class="alert alert-danger" role="alert">
+      <h1>Order Cancelled :(</h1>
+      <p>Thank you for shopping with Sweet Dreams Delight Bakery.</p>
+      <hr>
+      <button routerLink="/products" class="btn btn-primary">Continue Shopping</button>
+      <button routerLink="" (click)="this.data.clearLocalUser()"
+              class="btn btn-info">Sign Out</button>
+      <br>
+    </div>
+  </div>
+</div>
+</html>

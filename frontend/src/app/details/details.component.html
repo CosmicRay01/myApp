@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<div class="container">
+  <app-sidebar></app-sidebar>
+  <!-- Add images later to details.component.ts -->
+  <!-- <angular-image-slider [images]="imagesUrl"></angular-image-slider> -->
+
+  <div *ngIf="this.error !== undefined" class="alert alert-danger">{{this.error}}</div>
+
+  <div class="row">
+    <div class="column col-sm"></div>
+    <ng-container *ngFor="let item of pastry$ | keyvalue">
+      <ng-container *ngIf="item.key == 'data'">
+        <div class="card" style="width:300px;">
+          <img class="card-img-top img-fluid" src= {{item.value.image}}
+               alt={{item.value.name}}>
+          <div class="card-text px-3">
+            <h1 class="card-title">{{ item.value.name }}</h1>
+            <strong>Description:</strong> {{ item.value.description }}<br>
+            <strong>Price:</strong> {{ item.value.price | currency }}<br>
+            <strong>Quantity:</strong> {{ item.value.qty }}<br>
+            <div class="align-items-center form-inline">
+              <input class="form-control" [(ngModel)]="amt" type="number"
+                     min=0 max={{item.value.qty}} id="example-number-input">
+              <button type="submit" (click)="addCart(item.value.id, amt)"
+                      class="btn btn-primary">Add</button>
+            </div>
+          </div>
+          </div>
+      </ng-container>
+    </ng-container>
+    <div class="column col-sm"></div>
+  </div>
+</div>
+</html>
+
+
+

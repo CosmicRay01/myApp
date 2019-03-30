@@ -1,0 +1,62 @@
+<div ng-app ng-controller="UserCtrl" class="container">
+<br />
+  <div class="jumbotron">
+    <h1 class="text-center display-4">Sweet Dreams Delight Bakery</h1>
+    <div class="row">
+      <div class="column col-md">
+        <img src="/assets/img/bakes.png" alt="Baked Goods" style="width:100%">
+      </div>
+      <div class="column col-md">
+        <img src="/assets/img/baked.png" alt="Forest" style="width:100%">
+      </div>
+      <div class="column col-md">
+        <img src="/assets/img/dessert.png" alt="Forest" style="width:100%">
+      </div>
+    </div>
+    <br />
+    <h3 class="text-center">Sweat Dreams Delight is a family owned bakery that serves freshly baked
+    Mexican and French pastries. Please sign up to view our selection and place an order today.</h3>
+    <hr>
+    <p class="text-center">
+      <i class="material-icons">phone</i>
+      <br />(831) 884-5813
+      <br />
+      <br />
+      <i class="material-icons">home</i>
+      <br />1267 Broadway St.
+      <br />Seaside, CA 93955
+      <br />United States</p>
+  </div>
+  <div class="row">
+    <div class="column col-md"></div>
+    <div class="column col-md">
+      <div class="row justify-content-end">
+        <button *ngIf="!login" (click)="login = true" type="submit"
+                class="btn btn-primary">Login/Sign Up</button>
+      </div>
+      <div *ngIf="login" class="jumbotron">
+        <form class="form-group">
+          <div *ngIf="this.error !== undefined" class="alert alert-danger">{{this.error}}</div>
+          <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="username">Username</span>
+              </div>
+              <input type="text" class="form-control" aria-label="Username" aria-describedby="username"
+                [(ngModel)]="this.user.username" name="username" required>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="password">Password</span>
+            </div>
+            <input type="password" class="form-control" aria-label="Password" aria-describedby="password"
+                   [(ngModel)]="this.user.password" name="password" required>
+          </div>
+          <div class="btn-group mb-3" role="group">
+              <button (click)="add('authenticate')" type="submit" class="btn btn-primary">Login</button>
+              <button (click)="add('new')" type="submit" class="btn btn-dark">Sign Up</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<div class="container">
+    <app-sidebar></app-sidebar>
+    <div *ngIf="this.error !== undefined" class="alert alert-danger">{{this.error}}</div>
+    <div [@listStagger]="pastries$" class="card-deck">
+      <ng-container *ngFor="let item of pastries$ | keyvalue">
+        <ng-container *ngFor="let i of item.value | keyvalue">
+          <div class="card mb-3 mx-1">
+            <img class="card-img-top img-fluid" src= {{i.value.image}} alt={{i.value.name}}>
+            <div class="card-body">
+              <h4 class="card-title">{{i.value.name}}
+                <i class="material-icons" routerLink="/details/{{i.value.id}}">info</i>
+              </h4>
+              <p>Quantity: {{i.value.qty}}</p>
+              <p>{{i.value.price | currency}}</p>
+
+              <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+                <div class="align-items-center form-inline">
+                  <input class="form-control" [ngModel]="0"
+                         type="number" name="amount" min=0 max={{i.value.qty}} ngModel>
+                  <button (click)="saveId(i.value.id)" class="btn btn-primary">Add</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <span></span>
+        </ng-container>
+      </ng-container>
+    </div>
+</div>
+</html>
